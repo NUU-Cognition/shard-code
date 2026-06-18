@@ -1,0 +1,15 @@
+shard-spec: "0.2.0"
+version: "0.1.0"
+name: Code
+shorthand: code
+description: Loop-based coding workflows over referenced codebases — code requirements, tasks, and long-running missions, with learnings compounded into the Mesh
+dependencies:
+  - source: NUU-Cognition/shard-flint
+  - source: NUU-Cognition/shard-notepad
+  - source: NUU-Cognition/shard-projects
+types:
+  - Mission
+  - Phase
+folders:
+  - Mesh/Types/Missions
+  - Mesh/Archive/Missions
