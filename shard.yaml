@@ -1,9 +1,9 @@
 shard-spec: "0.3.0"
 id: ba7b2465-e041-43a5-be55-6f7ada9f0a11
-org: nuu-cognition
+org: nuucognition
 source:
   id: 13360c3c-de3c-46ea-955f-0198192d7237
-version: "0.1.1"
+version: "0.1.2"
 name: Code
 shorthand: code
 description: Loop-based coding workflows over referenced codebases — code requirements, tasks, and long-running missions, with learnings compounded into the Mesh
