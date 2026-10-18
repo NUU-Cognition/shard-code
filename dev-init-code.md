@@ -2,6 +2,8 @@
 required-reading:
   - "[[dev-knw-code-loops]]"
   - "[[dev-knw-code-engineering]]"
+orbh-sessions:
+  - "[[d98d16ae-1388-4228-8610-6954998a395a]]"
 ---
 
 # Code
@@ -85,5 +87,37 @@ Any status → failed (terminal — success criteria unreachable)
 
 - Load this init before using the shard. Read the required-reading knowledge files first.
 - A Mission is for work too large or too long for a single task. For a single bounded change, use a task (`wkfl-code-create_task` / `wkfl-code-do_task`).
-- Missions run headless under Orbh where possible — prefer `flint shard hstart code` and the `hwkfl-*` variants in that mode.
+- Missions run headless under Orbh where possible — in that mode, load the shard with `flint shard start code`, and follow the `> [!headless]` callouts of the `wkfl-*` workflows (see `# Headless` below).
 - For now, the verifier and success criteria in a Mission are free **text** — a human reads them, or a separate verifier pass interprets them. They are not yet executable specs.
+
+# Headless
+
+A headless or subagent Orbh session has no person at the terminal. It loads this init with `flint shard start code`, as an interactive session does. Follow the `> [!headless]` callouts of the workflows.
+
+The doctrine, the phases, and the mission lifecycle do not change. The difference is autonomy: a headless loop runs with no human checkpoints, and it reports through Orbh session keys and the iteration journal of each phase. The journal is the durable state: resume cold from it.
+
+## Headless Operation
+
+- Run [[dev-wkfl-code-do_mission]] and follow its `> [!headless]` callouts. They have no human gates, and they report progress with `flint orbh session set` keys.
+- When a loop genuinely cannot proceed unattended, set the mission to `blocked`, journal the reason, set a session key that flags it for an operator, and stop. Do not guess past a real blocker.
+- Tasks still delegate to the Projects shard. Use its workflows (`wkfl-proj-*`), and follow their `> [!headless]` callouts: Projects has one workflow for each mode.
+
+## Orbh Interface Keys
+
+Report progress with `flint orbh session set <key> <value>`. [[dev-wkfl-code-do_mission]] sets these keys:
+
+| Key | Description | When to update |
+|-----|-------------|----------------|
+| `mission-status` | The status of the mission | At `running` (Stage 1), and at the final status (Stage 4) |
+| `phase` | The current phase of the mission | After each cycle |
+| `iteration` | The current cycle of the loop | After each cycle |
+| `last-verifier-result` | The result of the last run of the Verifier | After each cycle |
+| `blockers` (for example) | The blocker that an operator must resolve | When the mission is `blocked` |
+
+### Phase Values
+
+The `phase` key holds the current phase of the mission: the `(Phase)` derivative that runs now ([[dev-tmp-code-phase-v0.1]]). The phases emerge as the mission runs, so the values are not fixed.
+
+## Result Delivery
+
+Each turn ends with `flint orbh session return --finish "<result>"`. The result gives the mission, its status, the current phase, and the last verifier result. When the mission is `blocked`, the result gives the blocker and the question for the operator. A subagent puts a blocker and its question in the result.

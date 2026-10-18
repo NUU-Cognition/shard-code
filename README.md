@@ -19,7 +19,7 @@ wkfl-code-start_code   →     wkfl-code-create_task    →     wkfl-code-create
 
 - **Notepad** (`ntpd`) — requirements dialogue. `wkfl-code-start_code` always opens a notepad with code-aware recon.
 - **Projects** (`proj`) — tasks. `create_task` / `do_task` are thin wrappers that add target repo, verifier, success criteria, and the compound step.
-- **Code** (`code`) — owns the `(Mission)` and `(Phase)` types. A mission is a thin, durable loop spec (goal, target repo, environment, verifier, success criteria) that tracks repos like a task and runs in **phases**. Each `(Phase)` is a mission derivative with its own short-term memory, state, journal, and WIP commits — created on demand so the mission can adapt. Run by `do_mission` (headless under Orbh via the `hwkfl` variant).
+- **Code** (`code`) — owns the `(Mission)` and `(Phase)` types. A mission is a thin, durable loop spec (goal, target repo, environment, verifier, success criteria) that tracks repos like a task and runs in **phases**. Each `(Phase)` is a mission derivative with its own short-term memory, state, journal, and WIP commits — created on demand so the mission can adapt. Run by `do_mission` (headless under Orbh: the same workflow, with its `> [!headless]` callouts).
 
 ## Capabilities
 
@@ -29,7 +29,7 @@ wkfl-code-start_code   →     wkfl-code-create_task    →     wkfl-code-create
 | Workflow | `wkfl-code-create_task` | Create an implementable code task (wraps Projects) |
 | Workflow | `wkfl-code-do_task` | Execute a code task as a verify loop (wraps Projects) |
 | Workflow | `wkfl-code-create_mission` | Author a Mission loop spec |
-| Workflow | `wkfl-code-do_mission` / `hwkfl-code-do_mission` | Run the mission loop, phase by phase |
+| Workflow | `wkfl-code-do_mission` | Run the mission loop, phase by phase (both modes: `> [!headless]` callouts for a headless Orbh session) |
 | Workflow | `wkfl-code-debug` | Debug sub-loop |
 | Skill | `sk-code-add_phase` | Add a phase to a mission on demand (adapt) |
 | Skill | `sk-code-compound` | Persist a learning into the Mesh |
@@ -45,10 +45,9 @@ wkfl-code-start_code   →     wkfl-code-create_task    →     wkfl-code-create
 ```
 Shards/(Dev Local) Code/
   shard.yaml                    # Manifest (not prefixed)
-  dev-init-code.md              # Init — shard context + doctrine
-  dev-hinit-code.md             # Headless init
+  dev-init-code.md              # Init — shard context + doctrine (with the # Headless section)
   skills/                       # dev-sk-code-{name}.md
-  workflows/                    # dev-wkfl-code-{name}.md, dev-hwkfl-code-{name}.md
+  workflows/                    # dev-wkfl-code-{name}.md (one workflow for each mode)
   templates/                    # dev-tmp-code-{name}-v<X.Y>.md
   knowledge/                    # dev-knw-code-{name}.md
   install/                      # type-code-{name}.md (NOT prefixed)

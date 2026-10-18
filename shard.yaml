@@ -3,7 +3,7 @@ shard: "@nuucognition/code"
 id: ba7b2465-e041-43a5-be55-6f7ada9f0a11
 source:
   id: 13360c3c-de3c-46ea-955f-0198192d7237
-version: "0.1.4"
+version: "0.1.5"
 name: Code
 shorthand: code
 description: Loop-based coding workflows over referenced codebases — code requirements, tasks, and long-running missions, with learnings compounded into the Mesh
