@@ -1,5 +1,7 @@
 ---
 description: "Phase — a chunk of a mission with its own short-term memory, state, and iteration journal; created on demand so a mission can adapt"
+orb:
+  - "@v1/nuucognition/session/9f552ce0-0455-44ed-b8ec-d749c3ae9b2f#flint/nuu-orbh"
 ---
 
 # Filename: Mesh/Types/Missions/(Mission) XXX [Mission Name] . (Phase) M [Phase Name].md
@@ -20,8 +22,8 @@ git-repos: /* inherited from the mission — the repo(s) this phase edits */
   - "[[rf-cb-example]]"
   - (continued)
 wip-commits: /* append SHA after each WIP commit made during this phase. Annotate with repo name if multiple: "a1b2c3d (rf-cb-flint)". */
-orbh-sessions:
-  - "[[session-id]]"
+orb:
+  - "[the output of flint address me]"
   - (continued)
 template: "[[tmp-code-phase-v0.1]]"
 authors: /* from .flint/identity.json; omit if no identity set */

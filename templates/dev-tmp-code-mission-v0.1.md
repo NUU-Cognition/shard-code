@@ -1,5 +1,7 @@
 ---
 description: "Mission — a long-running coding loop spec: goal, target repo, environment, verifier, success criteria, OrbRepo tracking, and a list of phases"
+orb:
+  - "@v1/nuucognition/session/9f552ce0-0455-44ed-b8ec-d749c3ae9b2f#flint/nuu-orbh"
 ---
 
 # Filename: Mesh/Types/Missions/(Mission) XXX [Mission Name].md
@@ -21,8 +23,8 @@ git-repos: /* the repo(s) this mission edits — codebase reference wikilinks (e
   - (continued)
 checkpointed: /* do not set — written by the OrbRepo checkpoint agent with checkpoint commit SHA(s) */
 pr: /* do not set — written by the OrbRepo close agent with the PR reference */
-orbh-sessions: /* every orbh session that runs this mission — append as the loop runs */
-  - "[[session-id]]"
+orb: /* every session that runs this mission — append the by address of flint address me (quoted) as the loop runs */
+  - "[the output of flint address me]"
   - (continued)
 template: "[[tmp-code-mission-v0.1]]"
 authors: /* from .flint/identity.json; omit if no identity set */

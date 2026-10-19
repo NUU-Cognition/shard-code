@@ -1,5 +1,7 @@
 ---
 description: "Author a Mission — a long-running coding loop spec with goal, target repo, environment, verifier, and success criteria"
+orb:
+  - "@v1/nuucognition/session/9f552ce0-0455-44ed-b8ec-d749c3ae9b2f#flint/nuu-orbh"
 ---
 
 > [!important] THIS FILE IS AN INSTRUCTION. WHEN REFERENCED IT IS MEANT TO BE TAKEN AS AN ACTION.
@@ -43,7 +45,7 @@ Write a **Mission** — a really long-running coding task expressed as a complet
 ## Stage 3: Finalise
 
 - Optionally seed the first phase now with [[dev-sk-code-add_phase]] (scope it to the first chunk / milestone you can see — not the whole mission). Otherwise the do-mission loop creates it on start. Only the first phase, not a full phase plan.
-- Leave status as `drafting` (run it later via [[dev-wkfl-code-do_mission]]), or set `running` and populate `orbh-sessions` if a loop is starting immediately.
+- Leave status as `drafting` (run it later via [[dev-wkfl-code-do_mission]]), or set `running` if a loop is starting immediately. Then stamp your session in `orb:`: run `flint address me`, and append its `by` address (quoted) to `orb:`. The full rule is in [[knw-f-artifacts]] § Session Tracking.
 - Confirm the mission is ready.
 
 # Output

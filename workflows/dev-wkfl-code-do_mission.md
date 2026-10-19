@@ -2,6 +2,8 @@
 description: "Run a Mission phase by phase — each phase runs its own loop with its own memory and journal, new phases are added on demand, until the verifier confirms the mission's success criteria"
 orbh-sessions:
   - "[[d98d16ae-1388-4228-8610-6954998a395a]]"
+orb:
+  - "@v1/nuucognition/session/9f552ce0-0455-44ed-b8ec-d749c3ae9b2f#flint/nuu-orbh"
 ---
 
 > [!important] THIS FILE IS AN INSTRUCTION. WHEN REFERENCED IT IS MEANT TO BE TAKEN AS AN ACTION.
@@ -34,11 +36,11 @@ For unattended execution under Orbh, run this workflow in a headless Orbh sessio
 - Identify the current phase: the first phase not yet `done`. If there are no phases yet, create the first one with [[dev-sk-code-add_phase]] (scope it to the first chunk / milestone you can see toward the goal — not the whole mission, not a single change).
 - **Resume cold from the current phase's Short-Term Memory and Iteration Journal** — these are the memory; trust them over assumptions about prior state.
 - Confirm the target environment is reachable and the verifier command(s) run. Branch-guard the repo before editing (never edit `dev`/`main` directly).
-- Set the mission status to `running` and append your session to `orbh-sessions`.
+- Set the mission status to `running`. Stamp your session in `orb:`: run `flint address me`, and append its `by` address (quoted) to `orb:`. Add nothing only when `orb:` or `orbh-sessions` has an item that is exactly your `by` address, the short form `@v1/<org>/session/<uuid>`, `[[<uuid>]]`, or your bare `<uuid>`. Old notes keep `orbh-sessions`: never remove it, and add no new item to it. The full rule is in [[knw-f-artifacts]] § Session Tracking.
 - Once loaded and the environment verifies clean, progress to the next stage.
 
 > [!headless]
-> After you set the mission status to `running` and add the session to `orbh-sessions`, set a session key: `flint orbh session set mission-status running`.
+> After you set the mission status to `running` and stamp your session in `orb:`, set a session key: `flint orbh session set mission-status running`.
 
 ## Stage 2: Run the Current Phase
 
